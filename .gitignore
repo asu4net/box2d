@@ -5,3 +5,16 @@ settings.ini
 CMakeSettings.json
 out/
 .vs/
+
+# Binaries
+**/bin/
+bin-int/
+
+# Visual Studio files and folder
+**.sln
+**.vcxproj
+**.vcxproj.filters
+**.vcxproj.user
+
+# Rider files and folder
+.idea/
