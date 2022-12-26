@@ -2,7 +2,7 @@ project "box2d"
     kind "StaticLib"
     language "C++"
     cppdialect "C++11"
-    staticruntime "off"
+    staticruntime "on"
 
     outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
