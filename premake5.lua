@@ -1,13 +1,12 @@
 project "box2d"
     kind "StaticLib"
     language "C++"
-    cppdialect "C++11"
     staticruntime "off"
 
     outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
-    targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-    objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+    targetdir ("%{wks.location}/Binaries/" .. outputdir .. "/%{prj.name}")
+    objdir ("%{wks.location}/Intermediate/" .. outputdir .. "/%{prj.name}")
 
     files
     {
@@ -22,13 +21,17 @@ project "box2d"
         "src"
     }
 
-    filter "system:windows"
-        systemversion "latest"
-
     filter "configurations:Debug"
+        defines "NIT_DEBUG"
         runtime "Debug"
         symbols "on"
-
-    filter "configurations:Release"
+    
+    filter "configurations:EditorRelease"
+        defines "NIT_RELEASE"
         runtime "Release"
         optimize "on"
+        
+    filter "configurations:GameRelease"
+          defines "NIT_RELEASE"
+          runtime "Release"
+          optimize "on"
